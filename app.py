@@ -9,14 +9,14 @@ print("hello world")
 
 def start_download():
     try:
-        d_percentage.pack()
-        progressBar.pack(padx=10, pady=10)
         ytLink = link.get()
         ytObject = YouTube(ytLink, on_progress_callback = on_progress)
         video = ytObject.streams.get_highest_resolution()
 
         #set the title to the video's title
         finishLabel.configure(text=ytObject.title , text_color="white")
+        d_percentage.pack()
+        progressBar.pack(padx=10, pady=10)
         video.download()
         finishLabel.configure(text="Downloaded")
     except:
